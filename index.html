@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alpha 5S Cleaner | GTA Cleaning Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Alpha 5S Cleaner offers residential, office, and warehouse cleaning across the GTA."
+  />
+
+  <style>
+    /* ===== BASIC RESET ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* === COLORS === */
+    :root {
+      --a5-green: #22c55e;  /* main green */
+      --a5-blue:  #00a9e6;  /* accent blue */
+      --a5-dark:  #000000;  /* black like logo text */
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--a5-dark);
+    }
+
+    .brand-tagline {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      color: #4b5563;
+      font-weight: 500;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: var(--a5-green);
+      transition: width 0.15s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--a5-green);
+      background: #ecfdf5;
+      color: #065f46;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .nav-cta:hover {
+      background: var(--a5-green);
+      color: white;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        right: 1rem;
+        top: 3.5rem;
+        background: #ffffff;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+        min-width: 180px;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* ===== HERO ===== */
+
+    #hero {
+      padding: 3rem 1.5rem 3.5rem;
+      background: radial-gradient(circle at top left, #dbeafe 0, transparent 60%),
+                  radial-gradient(circle at bottom right, #bbf7d0 0, transparent 60%),
+                  #f5f7fb;
+      /* removed scroll-margin-top here so Home lands at the top of the hero */
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--a5-green);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #022c22;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--a5-green);
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .hero-list li + li {
+      margin-top: 0.3rem;
+    }
+
+    .hero-list li::before {
+      content: "✓ ";
+      color: var(--a5-green);
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--a5-green), var(--a5-blue));
+      color: white;
+      box-shadow: 0 16px 35px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.55);
+    }
+
+    .btn-outline {
+      background: white;
+      border-color: #d1d5db;
+      color: #374151;
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-1px);
+      background: #f3f4f6;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 1.1rem;
+      border: 1px solid #e5e7eb;
+      padding: 1.4rem 1.2rem;
+      font-size: 0.85rem;
+      color: #4b5563;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #6b7280;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card li + li {
+      margin-top: 0.35rem;
+    }
+
+    /* ===== SECTION HEADINGS ===== */
+    /* instead of applying scroll-margin-top to ALL sections,
+       only offset the ones below the hero so the sticky header
+       doesn’t cover their titles */
+    #services,
+    #contact {
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #022c22;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* ===== SERVICES ===== */
+    #services, #contact {
+      background: #ffffff;
+      padding: 3rem 1.5rem;
+      scroll-margin-top: 120px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 1.2rem 1.1rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--a5-green);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.3rem;
+    }
+
+    .card ul {
+      list-style: disc;
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #065f46;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.7rem;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      font: inherit;
+      color: #111827;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid var(--a5-green);
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    .contact-note {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .contact-card {
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+      padding: 1.2rem 1.1rem;
+      background: #f9fafb;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .contact-item + .contact-item {
+      margin-top: 0.7rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #6b7280;
+    }
+
+    .contact-value {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem 1.5rem 1.4rem;
+      background: #f9fafb;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      border-bottom: 1px dashed #d1d5db;
+      font-size: 0.8rem;
+      color: #4b5563;
+    }
+
+    /* Logo styling override */
+    .brand-logo {
+      width: 150px;      /* make the logo wider */
+      height: auto;      /* let height adjust automatically */
+      border-radius: 0;  /* no circle, show full logo */
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+    .brand-logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+/* ===== 5S ROBOT SECTION ===== */
+
+#alpha-bot {
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #e0f7ff, #e8ffe6);
+  text-align: center;
+}
+
+.alpha-bot-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #022c22;
+  margin-bottom: 2rem;
+}
+
+/* Animation container */
+.alpha-bot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ROBOT ICON */
+.alpha-bot-robot {
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 20px;
+  border: 3px solid #22c55e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: floatBot 3s ease-in-out infinite;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.alpha-bot-robot::before {
+  content: "🤖";
+  font-size: 70px;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatBot {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* 5S GRID */
+.alpha-bot-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.alpha-bot-item {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alpha-bot-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.alpha-bot-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 0.3rem;
+}
+
+.alpha-bot-text {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.45;
+}
+</style>
+</head>
+<body id="top">
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="images/alpha-5s-logo.png" alt="Alpha 5S Cleaner logo">
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">Alpha 5S Cleaner</div>
+        <div class="brand-tagline">Residential • Office • Warehouse · GTA</div>
+      </div>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">GTA Cleaning Services</div>
+        <h1 class="hero-title">
+          Done right <span>Every time.</span>
+        </h1>
+        <p class="hero-text">
+          Alpha 5S Cleaner brings a disciplined, detail-driven approach to cleaning across the Greater Toronto Area. We don’t just tidy spaces — we restore order, elevate hygiene, and create environments where people feel safe, productive, and comfortable.
+          <br><br>
+          Whether you’re a homeowner preparing for a move, a business looking to maintain a professional workplace, or a warehouse manager with strict safety requirements, we deliver cleaning that meets real-world demands.
+        </p>
+
+        <ul class="hero-list">
+          <li>Deep residential cleaning — kitchens, bathrooms, appliances, baseboards, interior windows, high-touch surfaces, and full home sanitization</li>
+          <li>Move-in / move-out cleaning — detailed top-to-bottom reset for landlords, tenants, and realtors, including appliances, cabinets, walls, and fixtures</li>
+          <li>Office cleaning — desks, meeting rooms, workstations, reception areas, washrooms, lunchrooms, floors, garbage removal, and daily/weekly sanitizing protocols</li>
+          <li>Warehouse & industrial support cleaning — dust control, debris removal, equipment-area wipe-downs, surface sanitizing, and safety-focused cleaning for employee zones and high-traffic areas (no heavy machinery required)</li>
+          <li>Flexible scheduling — evenings, weekends, after-hours access, and last-minute availability to keep downtime minimal</li>
+          <li>Office cleaning — desks, meeting rooms, workstations, reception areas, washrooms, lunchrooms, floors, garbage removal, and daily/weekly sanitizing protocols</li>
+          <li>Recurring service plans — weekly, bi-weekly, and monthly maintenance programs tailored to homes, offices, and industrial spaces</li>
+        </ul>
+
+        <div class="hero-actions">
+          <!-- you can re-enable CTAs here later if you want -->
+        </div>
+
+        <p class="hero-note">
+          Fully insured • Serving Toronto, Mississauga, Brampton, Vaughan, Markham and nearby cities.
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Why people hire Alpha 5S</h3>
+        <ul>
+          <li>• Operational discipline: Every job follows a structured checklist so nothing is missed</li>
+          <li>• Consistent quality: Same-team cleaning whenever possible to ensure predictable results</li>
+          <li>• Direct, upfront pricing: No hidden fees, no surprise add-ons — transparent quotes from day one</li>
+          <li>• Professional communication: We confirm appointments, provide reminders, and update you throughout the service</li>
+          <li>• Respect for your time and space: We arrive on schedule, work efficiently, and follow your building or household rules</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ALPHABOT 5S SECTION -->
+  <section id="five-s">
+    <div class="container alpha-bot">
+      <!-- LEFT: The robot -->
+      <div class="alpha-bot-visual">
+        <div class="alpha-bot-core">
+          <div class="alpha-bot-eye alpha-bot-eye--left"></div>
+          <div class="alpha-bot-eye alpha-bot-eye--right"></div>
+          <div class="alpha-bot-mouth"></div>
+        </div>
+
+      <!-- RIGHT: 5S explanation -->
+      <div class="alpha-bot-content">
+        <p class="alpha-bot-eyebrow"></p>
+        <h2 class="alpha-bot-title">A disciplined 5S framework behind every clean.</h2>
+        <p class="alpha-bot-subtitle">
+          AlphaBot represents the way we think about cleaning: engineered, repeatable, and precise.
+          Every project is guided by five simple principles — Shine, Spotless, Serene, Safe, and Sanitize.
+        </p>
+
+        <div class="alpha-bot-list">
+          <div class="alpha-bot-item alpha-bot-item--1">
+            <div class="alpha-bot-label">• Shine</div>
+            <p class="alpha-bot-text">
+              Surfaces restored to a visibly polished state — counters, fixtures, and key touchpoints look intentionally finished, not just “wiped.”
+            </p>
+          </div>
+
+          <div class="alpha-bot-item alpha-bot-item--2">
+            <div class="alpha-bot-label">• Spotless</div>
+            <p class="alpha-bot-text">
+              Precision cleaning that eliminates dust, crumbs, and buildup in corners, edges, and high-traffic zones other cleaners overlook.
+            </p>
+          </div>
+
+          <div class="alpha-bot-item alpha-bot-item--3">
+            <div class="alpha-bot-label">• Serene</div>
+            <p class="alpha-bot-text">
+              Calm, organized environments with less visual noise — easier to think, work, and relax in, whether at home or in the office.
+            </p>
+          </div>
+
+          <div class="alpha-bot-item alpha-bot-item--4">
+            <div class="alpha-bot-label">• Safe</div>
+            <p class="alpha-bot-text">
+              Clear walkways, reduced hazards, and thoughtful product use — cleaning that supports safety and compliance, not just aesthetics.
+            </p>
+          </div>
+
+          <div class="alpha-bot-item alpha-bot-item--5">
+            <div class="alpha-bot-label">• Sanitize</div>
+            <p class="alpha-bot-text">
+              Targeted sanitizing of high-touch areas like handles, switches, desks, and rails to help protect the people using your space every day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-title">Services</h2>
+        <p class="section-subtitle">
+          Choose the option that fits your space. All work is quoted before booking so there are no surprises.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-label">Residential</div>
+          <div class="card-title">Home Cleaning — Precision Care for Modern Living</div>
+          <p>
+            Your home is your command center — and it deserves maintenance that matches the way you live. Our residential service combines disciplined cleaning processes with a meticulous eye for detail, delivering a consistently elevated environment.
+          </p>
+          <ul>
+            <li>Hygienic kitchens, revitalized bathrooms, polished floors</li>
+            <li>High-resolution detail work: baseboards, fixtures, ledges</li>
+            <li>Full-spectrum move-in / move-out resets for property transitions</li>
+            <li>Scheduled upkeep: weekly, bi-weekly, or monthly</li>
+            <li>Discreet, efficient, and quality-controlled every visit</li>
+          </ul>
+          <span class="card-tag">From $145 · GTA</span>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Commercial</div>
+          <div class="card-title">Office & Workplace — Clean Spaces That Accelerate Productivity</div>
+          <p>
+            A high-performing team deserves a high-performing environment. Our commercial cleaning solutions are built around operational reliability — the same ethos you’d expect from a world-class organization.
+          </p>
+          <ul>
+            <li>Executive-level upkeep for offices, reception, meeting spaces</li>
+            <li>Sanitized high-touch areas to support employee well-being</li>
+            <li>Lunchrooms and washrooms cared for with enterprise-grade consistency</li>
+            <li>Floor maintenance that keeps your workspace client-ready</li>
+            <li>Waste management and essential restocking</li>
+            <li>Structured service models: nightly, weekly, monthly</li>
+          </ul>
+          <span class="card-tag">Monthly contracts available</span>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Industrial</div>
+          <div class="card-title">Warehouse Support — Operational Cleanliness for Critical Environments</div>
+          <p>
+            Your warehouse is the backbone of your operation. We support it with cleaning frameworks designed around safety, clarity, and flow — inspired by modern manufacturing principles and the global 5S standard.
+          </p>
+          <ul>
+            <li>Clean, organized support zones: offices, breakrooms, lockers</li>
+            <li>Dust mitigation for shelves, equipment surfaces, and walkways</li>
+            <li>Debris control to maintain safe, efficient movement paths</li>
+            <li>Sanitization of high-touch and shared-use areas</li>
+            <li>Light 5S optimization to reinforce order and reduce downtime</li>
+            <li>Flexible scheduling that aligns with your production or shift cycles</li>
+          </ul>
+          <span class="card-tag">Site visit & custom quote</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-title">Request a Free Quote</h2>
+        <p class="section-subtitle">
+          Tell us a bit about your space and your cleaning needs. Our team will review the details and follow up with a tailored proposal — clear, accurate, and built around your schedule.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <form action="#" method="post">
+            <div>
+              <label for="name">Name*</label>
+              <input id="name" name="name" type="text" required />
+            </div>
+
+            <div>
+              <label for="email">Email*</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone*</label>
+              <input id="phone" name="phone" type="tel" required placeholder="+1 (000) 000-0000" />
+            </div>
+
+            <div>
+              <label for="service">Service type</label>
+              <input id="service" name="service" type="text" placeholder="Residential / Office / Warehouse" />
+            </div>
+
+            <div>
+              <label for="message">Details</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Provide specifics such as location, approximate size, frequency, and any priorities or special considerations. The more detail you share, the more precise your quote."
+              ></textarea>
+            </div>
+
+            <!-- VIDEO UPLOAD -->
+            <div class="quote-form__field quote-form__field--video">
+              <label for="walkthroughVideo">Upload Video (Optional)</label>
+              <p class="quote-form__help">
+                Prefer to show us your space? Share a quick 20–60 second walkthrough video so we can see the layout,
+                traffic zones, and any areas that need extra attention. This helps us provide a faster, more accurate quote.
+              </p>
+              <input
+                type="file"
+                id="walkthroughVideo"
+                name="walkthrough_video"
+                accept="video/*">
+              <p class="quote-form__note">
+                Accepted formats: MP4, MOV, AVI. Maximum size depends on your email/server settings.
+              </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+            <p class="contact-note">
+              We normally respond within one business day with a quote or a few quick questions.
+            </p>
+          </form>
+        </div>
+
+        <aside class="contact-card">
+          <div class="contact-item">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+1 (604) 404-8001</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">info@alpha5scleaner.ca</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">Service Area</div>
+            <div class="contact-value">
+              Greater Toronto Area: Toronto, Mississauga, Brampton, Vaughan, Markham and nearby cities.
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label">Hours</div>
+            <div class="contact-value">
+              Mon–Fri: 8:00 am – 6:00 pm<br />
+              Weekends by appointment.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="year"></span> Alpha 5S Cleaner. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const toggleBtn = document.querySelector(".nav-toggle");
+  const navMenu = document.getElementById("navMenu");
+
+  toggleBtn.addEventListener("click", function () {
+    const isOpen = navMenu.classList.toggle("open");
+    toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navMenu.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
